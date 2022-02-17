@@ -18,12 +18,12 @@ function App() {
   }, [])
 
   useEffect(() => {
-    localStorage.getItem(local_storage_key, JSON.stringify(toDos))
+    localStorage.setItem(local_storage_key, JSON.stringify(toDos))
   }, [toDos]);
 
-  function toggleToDo(id) {
+  function toggleToDo(title) {
     const newToDoList = [...toDos];
-    const toDo = newToDoList.find((todo) => todo.id === id);
+    const toDo = newToDoList.find((todo) => todo.title === title);
     toDo.completed = !toDo.completed;
     setToDos(newToDoList);
   }
@@ -32,7 +32,7 @@ function App() {
     const title = toDoNameRef.current.value;
     if (title === "") return console.log(title);
     setToDos(previousToDo => {
-      return [...previousToDo, {id: previousToDo.id + 1, title: title, completed: false}]
+      return [...previousToDo, {id: previousToDo + 1, title: title, completed: false}]
     });
     toDoNameRef.current.value = null;
   };

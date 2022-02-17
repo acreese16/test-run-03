@@ -5,7 +5,7 @@ import React from "react";
 function ToDo({ todo, toggleToDo}){
 
     const handleToDoClick = () => {
-        toggleToDo(todo.id)
+        toggleToDo(todo.title)
     }
 
     return (
